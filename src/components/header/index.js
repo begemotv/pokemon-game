@@ -1,4 +1,4 @@
-import s from './header.module.css'
+import s from './style.module.css'
 
 const Header = ({title, descr}) => {
     return (
@@ -9,7 +9,7 @@ const Header = ({title, descr}) => {
                 <p>{descr}</p>
             </div>
         </header>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
