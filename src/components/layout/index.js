@@ -1,6 +1,6 @@
-import s from './layout.module.css'
+import s from './style.module.css'
 
-const Layout = ({colorBg, descr, id, title, urlBg}) => {
+const Layout = ({colorBg, children, id, title, titleColor, urlBg}) => {
     return (
         <section 
             className={s.root} 
@@ -11,17 +11,19 @@ const Layout = ({colorBg, descr, id, title, urlBg}) => {
         }}>
             <div className={s.wrapper}>
                 <article>
-                    <div className={s.title}>
-                        <h3>{title}</h3>
+                    <div className={s.title} >
+                        <h3
+                           style={{color: title === 'Cards' ? `white` : ''}} 
+                        >{title}</h3>
                         <span className={s.separator}></span>
                     </div>
                     <div className={s.desc.full}>
-                        <p>{descr}</p>
+                        {children}
                     </div>
                 </article>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;
