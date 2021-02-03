@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import s from './style.module.css';
+import cn from 'classnames';
 
 import cardBack from '../../img/card-back-side.jpg'
 
@@ -7,7 +8,7 @@ const PokemonCard = ({id, img, name, type, values}) => {
     const [isActive, setIsActive] = useState(false);
 
     const handleCardClick = () => {
-        setIsActive(true);
+        setIsActive(!isActive);
     };
 
     return (
@@ -15,15 +16,15 @@ const PokemonCard = ({id, img, name, type, values}) => {
             className={s.root}
             onClick={handleCardClick}
         >
-            <div className={`${s.pokemonCard} ${isActive ? s.active : ''}`}>
+            <div className={cn(s.pokemonCard, {[s.active]: isActive})}>
                 <div className={s.cardFront}>
-                    <div className={`${s.wrap} ${s.front}`}>
-                        <div className={`${s.pokemon} ${s[type]}`}>
+                    <div className={cn(s.wrap, s.front)}>
+                        <div className={cn(s.pokemon, s[type])}>
                             <div className={s.values}>
-                                <div className={`${s.count} ${s.top}`}>{values.top}</div>
-                                <div className={`${s.count} ${s.right}`}>{values.right}</div>
-                                <div className={`${s.count} ${s.bottom}`}>{values.bottom}</div>
-                                <div className={`${s.count} ${s.left}`}>{values.left}</div>
+                                <div className={cn(s.count, s.top)}>{values.top}</div>
+                                <div className={cn(s.count, s.right)}>{values.right}</div>
+                                <div className={cn(s.count, s.bottom)}>{values.bottom}</div>
+                                <div className={cn(s.count, s.left)}>{values.left}</div>
                             </div>
                             <div className={s.imgContainer}>
                                 <img src={img} alt={name} />
@@ -38,7 +39,7 @@ const PokemonCard = ({id, img, name, type, values}) => {
                 </div>
 
                 <div className={s.cardBack}>
-                    <div className={`${s.wrap} ${s.back}`}>
+                    <div className={cn(s.wrap, s.back)}>
                         <img src={cardBack} alt="Сard Backed" />
                     </div>
                 </div>
