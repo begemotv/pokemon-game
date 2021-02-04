@@ -10,9 +10,13 @@ const MenuHeader = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    const handleMenuClose = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
         <>
-            <Menu isMenuOpen={isMenuOpen}/>
+            <Menu isMenuOpen={isMenuOpen} onRouteClick={handleMenuClose} />
             <NavBar isMenuOpen={isMenuOpen} onMenuClick={handleMenuClick} />
         </>
     );
