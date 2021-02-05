@@ -8,7 +8,6 @@ import ContactsPage from './routes/contacts';
 import NotFoundPage from './routes/notFound';
 import MenuHeader from './components/menuHeader';
 import Footer from './components/footer';
-import {POKEMONS} from './mocks/pokemons';
 
 import s from './style.module.css'
 
@@ -31,7 +30,7 @@ const App = () => {
                   <HomePage />
                 </Route>
                 <Route path='/game' >
-                  <GamePage pokemonsArr={POKEMONS} />
+                  <GamePage />
                 </Route>
                 <Route path='/about' >
                   <AboutPage />

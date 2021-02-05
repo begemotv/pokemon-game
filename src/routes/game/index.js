@@ -1,23 +1,16 @@
-import {useState} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import PokemonCard from '../../components/pokemonCard';
+import {POKEMONS} from '../../mocks/pokemons';
 
-const GamePage = ({pokemonsArr}) => {
-  const [pokemons, setPokemons] = useState(pokemonsArr);
-  const [isActive, setIsActive] = useState(false);
-
-  const handleCardClick = () => {
-      setIsActive(!isActive);
-  };
-
+const GamePage = () => {
   const history = useHistory();
 
   const handleHomeButtonClick = () => {
       history.push('/');
   };
 
-  const pokemonsFive = pokemons.slice(0, 5);
+  const pokemonsFive = POKEMONS.slice(0, 5);
 
     return (
       <div>
@@ -32,8 +25,6 @@ const GamePage = ({pokemonsArr}) => {
                     name={item.name}
                     type={item.type}
                     values={item.values} 
-                    isActive={isActive}
-                    onCardClick={handleCardClick}
                 />)
             }
             </div>
