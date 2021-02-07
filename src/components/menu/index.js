@@ -1,31 +1,26 @@
 import s from './style.module.css';
+import cn from 'classnames';
 
-const Menu = ({isMenuOpen}) => {
+import Route from '../route';
+import {APP_ROUTES} from '../../const';
+
+const Menu = ({isMenuOpen, onRouteClick}) => {
     return (
-        <div className={isMenuOpen ? 'menuContainer.active' : 'menuContainer.deactive'}>
+        <div className={cn(s.menuContainer, {
+            [s.active]: isMenuOpen === true,
+            [s.deactive]: isMenuOpen === false
+        })}>
             <div className={s.overlay} />
             <div className={s.menuItems}>
                 <ul>
-                <li>
-                    <a href={s.welcome}>
-                    HOME
-                    </a>
-                </li>
-                <li>
-                    <a href={s.game}>
-                    GAME
-                    </a>
-                </li>
-                <li>
-                    <a href={s.about}>
-                    ABOUT
-                    </a>
-                </li>
-                <li>
-                    <a href={s.contact}>
-                    CONTACT
-                    </a>
-                </li>
+                    {APP_ROUTES.map(({title, routeName}, i) => 
+                        <Route 
+                            key={i} 
+                            title={title} 
+                            routeName={routeName} 
+                            onRouteClick={onRouteClick}
+                        />
+                    )}
                 </ul>
             </div>
         </div>

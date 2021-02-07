@@ -1,13 +1,19 @@
-import s from './style.module.css'
+import {useHistory} from 'react-router-dom';
 
-const Header = ({title, descr, onButtonClick}) => {
+import s from './style.module.css';
+
+const Header = ({title, descr}) => {
+    const history = useHistory();
+
     const handleStartClick = () => {
-        onButtonClick && onButtonClick('game');
+        history.push('/game');
     };
 
     return (
         <header className={s.root}>
-            <div className={s.forest}></div>
+            <div className={s.forest} />
+            <div className={s.silhouette } />
+            <div className={s.moon} />
             <div className={s.container}>
                 <h1>{title}</h1>
                 <p>{descr}</p>

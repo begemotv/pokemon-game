@@ -3,23 +3,16 @@ import background from '../../img/bg1.jpg'
 import Footer from '../../components/footer';
 import Header from '../../components/header';
 import Layout from '../../components/layout';
-import PokemonCard from '../../components/pokemonCard';
 import MenuHeader from '../../components/menuHeader';
 import logoImg from '../../img/logo.png';
-import {POKEMONS} from '../../mocks/pokemons';
 
-const HomePage = ({onPageChange}) => {
-    const handleButtonClick = (page) => {
-        onPageChange && onPageChange(page)
-    }
-
+const HomePage = ({onPageChange, pokemonsArr}) => {
     return (
         <>
         <MenuHeader />
         <Header
             title='Pokemon Game'
             descr='This is simple triple triad card game'
-            onButtonClick={handleButtonClick}
         />
         <Layout
             id='rules'
@@ -35,19 +28,6 @@ const HomePage = ({onPageChange}) => {
         >
             <img src={logoImg} alt='logo' />
             <p style={{color: 'white'}}>Each player has five cards in a hand and the aim is to capture the opponent's cards by turning them into the player's own color of red or blue.</p>
-            <div className='flex'>
-            {
-                POKEMONS.map((item) => 
-                <PokemonCard 
-                    key={item.id}
-                    id={item.id}
-                    img={item.img}
-                    name={item.name}
-                    type={item.type}
-                    values={item.values} 
-                />)
-            }
-            </div>
         </Layout>
         <Layout
             id='about'
